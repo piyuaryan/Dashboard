@@ -7,6 +7,6 @@
         <section id="home">
             <h1>My Dashboard</h1>
         </section>
-        <!-- End Home Page Slider -->
+
     </tiles:putAttribute>
 </tiles:insertDefinition>

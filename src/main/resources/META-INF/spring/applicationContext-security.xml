@@ -10,19 +10,19 @@
 
     <!-- TODO: Piyush check whether following are required : session-fixation-protection="newSession" auto-config="true"-->
     <http use-expressions="true">
-        <intercept-url pattern="/login**" access="permitAll"/>
         <!--<intercept-url pattern="/**" access="permitAll"/>-->
         <intercept-url pattern="/app/**" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/admin*" access="hasRole('ROLE_TRAINER')"/>
         <intercept-url pattern="/sa**" access="hasRole('ROLE_SUPER_ADMIN')"/>
-        <form-login
-                login-page="/login"
+        <intercept-url pattern="/" access="permitAll"/>
+        <!-- TODO: Piyush: write your own AjaxAuthenticator so that JSON response can be handled in menu.js -->
+       <form-login
                 default-target-url="/welcome"
                 login-processing-url="/j_spring_security_check"
-                authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password"/>
-        <logout invalidate-session="true" logout-url="/j_spring_security_logout" logout-success-url="/login?logout"/>
+        <logout invalidate-session="true" logout-url="/j_spring_security_logout" logout-success-url="/"/>
+        <!-- TODO: Piyush: Write Session Timeout filter to redirect to index.jsp -->
         <!--
         <session-management invalid-session-url="/login?message=Session%20timed%20out!!!" />
         -->
