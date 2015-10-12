@@ -9,25 +9,31 @@
             <j:when test="${pageContext.request.userPrincipal.authenticated}">
 
                 <!-- Stat Search -->
-                <div class="search-side">
-                    <a href="#" class="show-search"><i class="fa fa-search"></i></a>
+                <%--  <div class="search-side">
+                      <a href="#" class="show-search"><i class="fa fa-search"></i></a>
 
-                    <div class="search-form">
-                        <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                            <input type="text" value="" name="s" id="s" placeholder="Search dashboard.com">
-                        </form>
-                    </div>
-                </div>
-                <!-- End Search -->
+                      <div class="search-form">
+                          <form autocomplete="off" role="search" method="get" class="searchform" action="#">
+                              <input type="text" value="" name="s" id="s" placeholder="Search dashboard.com">
+                          </form>
+                      </div>
+                  </div>
+                --%>  <!-- End Search -->
 
                 <!-- Start Navigation List -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="active" href="<c:url value="/welcome" />">Home</a>
-                        <ul class="dropdown">
-                            <li><a class="active" href="<c:url value="/about" />">about</a>
-                            </li>
-                        </ul>
+                            <%--     <ul class="dropdown">
+                                     <li><a class="active" href="<c:url value="/about" />">about</a>
+                                     </li>
+                                 </ul>--%>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/upload" />">Upload</a>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/data" />">Data</a>
                     </li>
                     <li>
                         <a href="<c:url value="/about" />">About</a>
@@ -71,8 +77,9 @@
                             <input type="password" name="password" id="password" class="form-control" ng-model="password" required/>
                             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
                         </div>
+                        <%--
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
+                        --%>
                         <div class="form-actions">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Login</button>

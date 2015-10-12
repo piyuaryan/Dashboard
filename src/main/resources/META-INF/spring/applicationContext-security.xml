@@ -16,7 +16,7 @@
         <intercept-url pattern="/sa**" access="hasRole('ROLE_SUPER_ADMIN')"/>
         <intercept-url pattern="/" access="permitAll"/>
         <!-- TODO: Piyush: write your own AjaxAuthenticator so that JSON response can be handled in menu.js -->
-       <form-login
+        <form-login
                 default-target-url="/welcome"
                 login-processing-url="/j_spring_security_check"
                 username-parameter="username"
@@ -26,23 +26,23 @@
         <!--
         <session-management invalid-session-url="/login?message=Session%20timed%20out!!!" />
         -->
-        <!-- enable csrf protection -->
-        <csrf/>
+        <!-- TODO: Piyush: enable csrf protection -->
+        <csrf disabled="true"/>
     </http>
-<!--
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="piyush.ramavat" password="Welcome@1"
-                      authorities="ROLE_SUPER_ADMIN, ROLE_TRAINER, ROLE_USER"/>
-                <user name="chintan.gatecha" password="Welcome@1"
-                      authorities="ROLE_SUPER_ADMIN, ROLE_TRAINER, ROLE_USER"/>
-                <user name="sample.trainer" password="Welcome@1" authorities="ROLE_TRAINER, ROLE_USER"/>
-                <user name="sample.patron" password="Welcome@1" authorities="ROLE_USER"/>
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>
--->
+    <!--
+        <authentication-manager>
+            <authentication-provider>
+                <user-service>
+                    <user name="piyush.ramavat" password="Welcome@1"
+                          authorities="ROLE_SUPER_ADMIN, ROLE_TRAINER, ROLE_USER"/>
+                    <user name="chintan.gatecha" password="Welcome@1"
+                          authorities="ROLE_SUPER_ADMIN, ROLE_TRAINER, ROLE_USER"/>
+                    <user name="sample.trainer" password="Welcome@1" authorities="ROLE_TRAINER, ROLE_USER"/>
+                    <user name="sample.patron" password="Welcome@1" authorities="ROLE_USER"/>
+                </user-service>
+            </authentication-provider>
+        </authentication-manager>
+    -->
     <authentication-manager>
         <authentication-provider user-service-ref='myUserDetailsService'/>
     </authentication-manager>
