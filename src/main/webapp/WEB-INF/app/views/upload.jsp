@@ -6,7 +6,7 @@
         <div class="container">
             <h1>Upload</h1>
 
-            <form method="post" action="/upload/xls" enctype="multipart/form-data">
+            <form method="post" action="/upload/xls2" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="fileTag">Tag</label>
                     <input type="text" name="fileTag" class="form-control" id="fileTag" placeholder="Tag">

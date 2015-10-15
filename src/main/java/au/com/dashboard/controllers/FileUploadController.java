@@ -28,4 +28,10 @@ public class FileUploadController {
                                    @RequestParam("file") MultipartFile file) {
         return importService.importXls(fileTag, file);
     }
+
+    @RequestMapping(value = "/xls2", method = RequestMethod.POST)
+    public String handleFormUpload2(@RequestParam("fileTag") String fileTag,
+                                    @RequestParam("file") MultipartFile file) {
+        return importService.saveWeeklyProfit(fileTag, file);
+    }
 }
