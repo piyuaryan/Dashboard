@@ -10,8 +10,8 @@
 					<li role="presentation"><a href="#business-info" id="business-info-tab" role="tab" data-toggle="tab" aria-controls="business-info" aria-expanded="true">Business Info</a></li>
 					<li role="presentation"><a href="#stock_market" id="stock_market-tab" role="tab" data-toggle="tab" aria-controls="stock_market" aria-expanded="true">Stock Market</a></li>
 					<li role="presentation"><a href="#job_details" id="job_details-tab" role="tab" data-toggle="tab" aria-controls="job_details" aria-expanded="true">Job Details</a></li>
+					<li role="presentation"><a href="#Realestate" id="form6-tab" role="tab" data-toggle="tab" aria-controls="Realestate" aria-expanded="true">Realestate</a></li>
 					<li role="presentation"><a href="#loans" id="loans-tab" role="tab" data-toggle="tab" aria-controls="loans" aria-expanded="true">Loans</a></li>
-					<li role="presentation"><a href="#form6" id="form6-tab" role="tab" data-toggle="tab" aria-controls="form6" aria-expanded="true">Form6</a></li>
 				</ul>
 				<div id="myTabContent" class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="personal-details" aria-labelledby="personal-details-tab">
