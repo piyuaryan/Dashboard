@@ -37,7 +37,7 @@
 
     <!-- Hibernate Transaction Manager -->
     <!-- Activates annotation based transaction management -->
-    <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>

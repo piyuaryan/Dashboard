@@ -1,4 +1,6 @@
-angular.module('dashboard', []).controller('appCtrl', ['$scope', function ($scope) {
+var app = angular.module('dashboard', []);
+
+app.controller('appCtrl', ['$scope', function ($scope) {
     $scope.master = {};
 
     $scope.showLoginDiv = function () {
@@ -9,6 +11,13 @@ angular.module('dashboard', []).controller('appCtrl', ['$scope', function ($scop
         alert("login clicked");
     };
 }]);
+
+// utilities
+app.utility = {};
+
+app.utility.isObjectNull = function (obj) {
+    return typeof(obj) == 'undefined' || obj == undefined || !obj;
+};
 
 /*
  (function () {

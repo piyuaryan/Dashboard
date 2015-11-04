@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 /target/
+=======
+.settings
+target
+.idea
+*.iml
+>>>>>>> master
