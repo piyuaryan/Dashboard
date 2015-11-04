@@ -64,4 +64,5 @@
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/asset/js/appMain.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/asset/js/menu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/asset/js/upload.js"></script>
 </html>

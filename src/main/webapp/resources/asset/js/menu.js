@@ -1,5 +1,5 @@
 //angular.module('menu', []).controller('menuCtrl',  function ($scope) {
-angular.module('dashboard', []).controller('menuCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+app.controller('menuCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
     $scope.login = function () {
         $scope.dataLoading = true;

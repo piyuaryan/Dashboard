@@ -30,6 +30,16 @@ public class WeeklyProfitsDAOImpl extends AbstractDAO implements WeeklyProfitsDA
     }
 
     @Transactional
+    public WeeklyProfit findProfits(String name, String nameOfBusiness, Date dt) {
+        String qry = "SELECT wp FROM WeeklyProfit wp WHERE wp.name = :nm and wp.nameOfBusiness = :businessName and wp.weekEndingAt = :dt";
+        TypedQuery<WeeklyProfit> query = getEntityManager().createQuery(qry, WeeklyProfit.class);
+        query.setParameter("nm", name);
+        query.setParameter("businessName", nameOfBusiness);
+        query.setParameter("dt", dt);
+        return query.getSingleResult();
+    }
+
+    @Transactional
     public Long save(WeeklyProfit wp) {
         persist(wp);
         flush();

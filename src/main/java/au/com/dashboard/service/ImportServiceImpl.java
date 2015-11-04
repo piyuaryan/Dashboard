@@ -71,7 +71,7 @@ public class ImportServiceImpl implements ImportService {
     }
 
     @Transactional
-    public String saveWeeklyProfit(String fileTag, MultipartFile file) {
+    public void saveWeeklyProfit(String fileTag, MultipartFile file) throws Exception {
         try {
             Workbook workbook;
             Sheet worksheet;
@@ -82,7 +82,11 @@ public class ImportServiceImpl implements ImportService {
             } else {
                 throw new IllegalArgumentException("Received file does not have a standard excel extension.");
             }
-            worksheet = workbook.getSheet("Sheet1");
+            worksheet = workbook.getSheetAt(0);
+
+            if (worksheet == null) {
+                throw new Exception("Couldn't get the sheet.");
+            }
 
             Integer noOfEntries = worksheet.getPhysicalNumberOfRows();
             logger.info(noOfEntries.toString());
@@ -98,7 +102,12 @@ public class ImportServiceImpl implements ImportService {
                 String event = entry.getCell(5).getStringCellValue();
                 logger.info("Row Contents:" + name + " " + nameOfBusiness + " " + weekEndingDt + " " + sale + " " + approximateProfit + " " + event);
 
-                WeeklyProfit wp = new WeeklyProfit();
+                WeeklyProfit wp = weeklyProfits.findProfits(name, nameOfBusiness, weekEndingDt);
+
+                if (wp == null) {
+                    wp = new WeeklyProfit();
+                }
+
                 wp.setName(name);
                 wp.setNameOfBusiness(nameOfBusiness);
                 wp.setWeekEndingAt(weekEndingDt);
@@ -110,12 +119,11 @@ public class ImportServiceImpl implements ImportService {
                 logger.info("Saved : " + id);
                 System.out.println("###### Saved : " + id);
             }
-            return AppUtils.SUCCESS;
 
         } catch (Exception e) {
             logger.info(e.getMessage() + " " + e.getCause());
             // throw new MultipartException("Constraints Violated");
+            throw e;
         }
-        return AppUtils.FAIL;
     }
 }

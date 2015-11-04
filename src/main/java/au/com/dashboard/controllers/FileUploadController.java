@@ -1,7 +1,12 @@
 package au.com.dashboard.controllers;
 
 import au.com.dashboard.service.ImportService;
+import au.com.dashboard.util.AppUtils;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +35,21 @@ public class FileUploadController {
     }
 
     @RequestMapping(value = "/xls2", method = RequestMethod.POST)
-    public String handleFormUpload2(@RequestParam("fileTag") String fileTag,
-                                    @RequestParam("file") MultipartFile file) {
-        return importService.saveWeeklyProfit(fileTag, file);
+    public ResponseEntity<String> handleFormUpload2(@RequestParam("fileTag") String fileTag,
+                                                    @RequestParam("file") MultipartFile file) throws Exception {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        JSONObject json = new JSONObject();
+        try {
+            importService.saveWeeklyProfit(fileTag, file);
+
+            json.put("status", AppUtils.SUCCESS);
+            return new ResponseEntity<>(json.toString(), headers, HttpStatus.OK);
+        } catch (Exception e) {
+            json.put("status", AppUtils.FAIL);
+            json.put("errorMsg", e.getMessage());
+            return new ResponseEntity<>(json.toString(), headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

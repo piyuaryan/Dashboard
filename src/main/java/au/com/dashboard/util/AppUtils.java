@@ -4,11 +4,11 @@ import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
 public class AppUtils {
-    public static String SUCCESS = "Success";
-    public static String FAIL = "Failure";
+    public static String SUCCESS = "success";
+    public static String FAIL = "fail";
 
-    public static void validateOfficeData(MultipartFile file){
-        if(!file.getContentType().equals("application/vnd.ms-excel"))
+    public static void validateOfficeData(MultipartFile file) {
+        if (!file.getContentType().equals("application/vnd.ms-excel"))
             throw new MultipartException("Only excel files accepted!");
     }
 }

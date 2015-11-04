@@ -10,6 +10,8 @@ public interface WeeklyProfitsDAO {
 
     List<WeeklyProfit> getProfitsByWeek(Date dt);
 
+    WeeklyProfit findProfits(String name, String nameOfBusiness, Date dt);
+
     Long save(WeeklyProfit wp);
 
 }
